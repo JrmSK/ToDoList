@@ -45,10 +45,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="todoListMain">
+            <div className="container">
+                <div className="title">
+                    <h1>ToDo List</h1>
+                </div>
                 <div className="header">
                     <form onSubmit={this.addItem}>
-                        <input ref={input => this.name = input} placeholder="Enter something ToDo" />
+                        <input className="todoInput" ref={input => this.name = input} placeholder="Enter something ToDo" />
                         <select ref={x => this.day = x}>
                             {this.renderOptions(date_utils.days)}
                         </select>
@@ -61,8 +64,11 @@ class App extends React.Component {
                         <input type="submit" value="add"></input>
                     </form>
                 </div>
-                <div className="toDoContainer">
+                <div className="toDo-Container">
                     <List activities={this.state.activities} />
+                </div>
+                <div className="done-Container">
+
                 </div>
             </div>
         );

@@ -1,0 +1,19 @@
+*{
+    margin:0;
+}
+
+.container{
+    background-color: darksalmon;
+    height:100%; 
+}
+.container .title,.container .header{
+    text-align:center;
+    padding-top:5%;
+}
+.container .header .todoInput{
+    padding : 5px;
+    font-size : 20px;
+    border: 1px solid black;
+    width: 30%;
+    border-radius: 10px;
+}
