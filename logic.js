@@ -4,7 +4,7 @@ class App extends React.Component {
         this.state = {
             activities: [],
             placeholder: "Enter something ToDo",
-            doneActivities: []
+            doneActivities: [],
         };
         this.addItem = this.addItem.bind(this);
         this.moveToDoneList = this.moveToDoneList.bind(this)
@@ -19,19 +19,24 @@ class App extends React.Component {
             month: this.month.value,
             year: this.year.value
         };
-        this.state.activities.push(new_activity);
-        this.setState({
-            activities: this.state.activities
-        });
+        if (this.name.value !== "") {
+            this.state.activities.push(new_activity);
+            this.setState({
+                activities: this.state.activities
+            });
+        } else {
+            this.setState ({
+                placeholder: "Enter at least one character"
+            })
+        }
     }
 
     moveToDoneList(e) {
         e.target.parentElement.classList.add("done");
-        this.state.doneActivities.push(e.target.parentElement)
+        this.state.doneActivities.push(e.target.parentElement.textContent)
         this.setState({
             doneActivities: this.state.doneActivities,
         })
-        console.log(this.state.doneActivities);
     }
 
     /* Create drop down options */
@@ -47,7 +52,7 @@ class App extends React.Component {
                 </div>
                 <div className="header">
                     <form onSubmit={this.addItem}>
-                        <input className="todoInput" ref={input => this.name = input} placeholder="Enter something ToDo" />
+                        <input className="todoInput" ref={input => this.name = input} placeholder={this.state.placeholder} />
                         <br />
                         <select ref={x => this.day = x}>
                             {this.renderOptions(date_utils.days)}
@@ -65,7 +70,7 @@ class App extends React.Component {
                     <ToDoList activities={this.state.activities} handleClick={this.moveToDoneList} />
                 </div>
                 <div className="done-Container">
-                    {/* <DoneList/> */}
+                    <DoneList doneActivities={this.state.doneActivities} />
                 </div>
             </div>
         );
@@ -83,7 +88,7 @@ class ToDoList extends React.Component {
         var new_activity = `${activity.name} on ${date}`;
         return new_activity;
     }
-    select(e){
+    select(e) {
         this.props.handleClick(e);
     }
 
@@ -96,25 +101,22 @@ class ToDoList extends React.Component {
     }
 }
 
-// class DoneList extends React.Component {
-//     constructor(props) {
-//         super(props);
-//     }
+class DoneList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            doneActivities: this.props.doneActivities,
+        }
+    }
 
-//     generateActivityString(activity) {
-//         var date = date_utils.parseDate(activity.day, activity.month, activity.year);
-//         var new_activity = `${activity.name} on ${date}`;
-//         return new_activity;
-//     }
-
-//     render() {
-//         return (
-//             <ul>
-//                 {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}</li>)}
-//             </ul>
-//         );
-//     }
-// }
+    render() {
+        return (
+            <ul>
+                {this.props.doneActivities.map((i) => <li key={i.index}>{i}</li>)}
+            </ul>
+        );
+    }
+}
 
 ReactDOM.render(
     <App />,
