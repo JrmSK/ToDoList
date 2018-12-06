@@ -2,9 +2,6 @@ class List extends React.Component {
     constructor(props) {
         super(props);
         this.moveToDoneList= this.moveToDoneList.bind(this)
-        this.state = {
-            isDone:""
-        }
     }
 
     generateActivityString(activity) {
@@ -12,16 +9,14 @@ class List extends React.Component {
         var new_activity = `${activity.name} on ${date}`;
         return new_activity;
     }
-    moveToDoneList(){
-        this.setState({
-            isDone:"done"
-        })
+    moveToDoneList(e){
+        e.target.parentElement.classList.add("done")
+        (e.target.parentElement)
     }
-
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li className={this.state.isDone} key={i}>{this.generateActivityString(activity)}<button onClick={this.moveToDoneList}>Done !</button></li>)}
+                {this.props.activities.map((activity, i) => <li   key={i}>{this.generateActivityString(activity)}<button onClick={this.moveToDoneList} >Done !</button></li>)}
             </ul>
         );
     }
@@ -65,7 +60,9 @@ class App extends React.Component {
             year: this.year.value
         };
         this.state.activities.push(new_activity);
-        this.setState({ activities: this.state.activities });
+        this.setState({ 
+            activities: this.state.activities 
+        });
     }
 
     renderOptions(arr) {
@@ -81,6 +78,7 @@ class App extends React.Component {
                 <div className="header">
                     <form onSubmit={this.addItem}>
                         <input className="todoInput" ref={input => this.name = input} placeholder="Enter something ToDo" />
+                        <br/>
                         <select ref={x => this.day = x}>
                             {this.renderOptions(date_utils.days)}
                         </select>
