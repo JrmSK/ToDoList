@@ -8,17 +8,20 @@
 }
 .container .title,.container .header{
     text-align:center;
-    padding-top:5%;
+    padding-top:3%;
 }
 .container .header .todoInput{
     padding : 5px;
     font-size : 20px;
     border: 1px solid black;
-    width: 30%;
+    width: 40%;
     border-radius: 10px;
 }
 .toDo-Container{
     text-align: center;
+}
+.toDo-Container ul{
+    list-style: none;
 }
 .toDo-Container .done{
     display: none;

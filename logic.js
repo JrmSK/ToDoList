@@ -17,16 +17,10 @@ class App extends React.Component {
             month: this.month.value,
             year: this.year.value
         };
-        if (this.name.value !== "") {
-            this.state.activities.push(new_activity);
-            this.setState({ 
-                activities: this.state.activities 
-            });
-        } else {
-            this.setState({ 
-                placeholder: "Enter at least one character"
-            });
-        }
+        this.state.activities.push(new_activity);
+        this.setState({ 
+            activities: this.state.activities 
+        });
     }
 
     /* Create drop down options */
@@ -42,7 +36,8 @@ class App extends React.Component {
                 </div>
                 <div className="header">
                     <form onSubmit={this.addItem}>
-                        <input type="date" className="todoInput" ref={input => this.name = input} placeholder={this.state.placeholder} />
+                        <input className="todoInput" ref={input => this.name = input} placeholder="Enter something ToDo" />
+                        <br/>
                         <select ref={x => this.day = x}>
                             {this.renderOptions(date_utils.days)}
                         </select>
@@ -69,11 +64,7 @@ class App extends React.Component {
 class ToDoList extends React.Component {
     constructor(props) {
         super(props);
-        this.moveToDoneList = this.moveToDoneList.bind(this)
-        this.state = {
-            isDone: "",
-            activityNumber: 0
-        }
+        this.moveToDoneList= this.moveToDoneList.bind(this)
     }
 
     generateActivityString(activity) {
@@ -81,17 +72,14 @@ class ToDoList extends React.Component {
         var new_activity = `${activity.name} on ${date}`;
         return new_activity;
     }
-
-    moveToDoneList() {
-        this.setState({
-            isDone: "done",
-        })
+    moveToDoneList(e){
+        e.target.parentElement.classList.add("done")
+        (e.target.parentElement)
     }
-
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li className={this.state.isDone} key={i}>{this.generateActivityString(activity)}<button onClick={this.moveToDoneList}>Done !</button></li>)}
+                {this.props.activities.map((activity, i) => <li   key={i}>{this.generateActivityString(activity)}<button onClick={this.moveToDoneList} >Done !</button></li>)}
             </ul>
         );
     }
