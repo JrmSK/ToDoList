@@ -1,6 +1,10 @@
 class List extends React.Component {
     constructor(props) {
         super(props);
+        this.moveToDoneList= this.moveToDoneList.bind(this)
+        this.state = {
+            isDone:""
+        }
     }
 
     generateActivityString(activity) {
@@ -8,15 +12,40 @@ class List extends React.Component {
         var new_activity = `${activity.name} on ${date}`;
         return new_activity;
     }
+    moveToDoneList(){
+        this.setState({
+            isDone:"done"
+        })
+    }
 
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}</li>)}
+                {this.props.activities.map((activity, i) => <li className={this.state.isDone} key={i}>{this.generateActivityString(activity)}<button onClick={this.moveToDoneList}>Done !</button></li>)}
             </ul>
         );
     }
 }
+
+// class DoneList extends React.Component {
+//     constructor(props) {
+//         super(props);
+//     }
+
+//     generateActivityString(activity) {
+//         var date = date_utils.parseDate(activity.day, activity.month, activity.year);
+//         var new_activity = `${activity.name} on ${date}`;
+//         return new_activity;
+//     }
+
+//     render() {
+//         return (
+//             <ul>
+//                 {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}</li>)}
+//             </ul>
+//         );
+//     }
+// }
 
 class App extends React.Component {
     constructor(props) {
@@ -68,7 +97,7 @@ class App extends React.Component {
                     <List activities={this.state.activities} />
                 </div>
                 <div className="done-Container">
-
+                    {/* <DoneList/> */}
                 </div>
             </div>
         );

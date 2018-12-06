@@ -5,6 +5,7 @@
 .container{
     background-color: darksalmon;
     height:100%; 
+    position:absolute;
 }
 .container .title,.container .header{
     text-align:center;
@@ -17,3 +18,9 @@
     width: 30%;
     border-radius: 10px;
 }
+.toDo-Container{
+    text-align: center;
+}
+/* .toDo-Container .done{
+    display: none;
+} */
