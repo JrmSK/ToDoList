@@ -68,7 +68,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="beforeHeader">
+                <div className="header-title">
                     <h1 className="title">ToDo List</h1>
                 </div>
                 <div className="header">

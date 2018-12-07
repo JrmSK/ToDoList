@@ -1,9 +1,6 @@
+/* General */
 * {
     margin:0;
-}
-
-#root {
-    height: 100%;
 }
 
 .container{
@@ -11,7 +8,8 @@
     height:100%; 
 }
 
-.container .beforeHeader, .container .header{
+/* header */
+.container .header-title, .container .header{
     text-align:center;
 }
 
@@ -37,8 +35,9 @@
 }
 
 .button-submit {
+    margin-top: 5px;
     font-size: 1.5vw;
-    padding: 7px;
+    padding: 5.3px;
     border-radius: 5px;
     padding-right: 15px;
     padding-left: 15px;
@@ -56,7 +55,7 @@ input:focus {
 }
 
 .done-Container{
-    height:20%;
+    height:25%;
 }
 
 .toDo-Container, .done-Container{
@@ -74,7 +73,7 @@ input:focus {
     margin-left: -3vw;
 }
 
-.toDo-Container li,.done-Container li{
+.toDo-Container li, .done-Container li{
     margin-top: 2px;
     list-style: none;
     padding: 3px;
@@ -83,6 +82,10 @@ input:focus {
     border-radius: 3px;
     font-family: 'Caveat', cursive;
     font-size: 2.5vw;
+}
+
+.toDo-Container li:hover, .done-Container li:hover{
+    background-color: rgba(255, 255, 255, 0.507);
 }
 
 h1 {
