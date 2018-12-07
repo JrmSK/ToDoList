@@ -44,14 +44,14 @@ class App extends React.Component {
     }
 
     moveToDoneList(e) {
-        e.target.parentElement.classList.add("done");
+        e.target.parentElement.remove()
         this.state.doneActivities.push(e.target.parentElement.textContent)
         this.setState({
             doneActivities: this.state.doneActivities,
         })
     }
     moveToToDoList(e) {
-        e.target.parentElement.classList.add("done");
+        e.target.parentElement.remove()
         this.state.toDoActivities.push(e.target.parentElement.textContent)
         this.setState({
             toDoActivities: this.state.toDoActivities,
@@ -59,7 +59,7 @@ class App extends React.Component {
     }
 
     delete(e){
-        e.target.parentElement.classList.add("done");
+        e.target.parentElement.remove()
     }
 
     render() {

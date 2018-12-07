@@ -40,10 +40,6 @@
 .toDo-Container ul,.done-Container ul{
     list-style: none;
 }
-.toDo-Container .done,.done-Container .done{
-    display: none;
-}
-
 .inputImage{
     height: 20px;
     width:20px;
