@@ -18,9 +18,10 @@ class App extends React.Component {
         event.preventDefault();
         var new_activity = {
             name: this.name.value,
-            day: this.day.value,
-            month: this.month.value,
-            year: this.year.value
+            date : this.date.value
+            // day: this.day.value,
+            // month: this.month.value,
+            // year: this.year.value
         };
         if (this.name.value !== "") {
             this.state.activities.push(new_activity);
@@ -69,7 +70,8 @@ class App extends React.Component {
                     <form onSubmit={this.addItem}>
                         <input className="todoInput" ref={input => this.name = input} placeholder={this.state.placeholder} />
                         <br />
-                        <select ref={x => this.day = x}>
+                        <input type="date" ref={input => this.date = input} />
+                        {/* <select ref={x => this.day = x}>
                             {this.renderOptions(date_utils.days)}
                         </select>
                         <select ref={x => this.month = x}>
@@ -77,7 +79,7 @@ class App extends React.Component {
                         </select>
                         <select ref={x => this.year = x}>
                             {this.renderOptions(date_utils.years)}
-                        </select>
+                        </select> */}
                         <input type="submit" value="add"></input>
                     </form>
                 </div>
@@ -103,8 +105,7 @@ class ToDoList extends React.Component {
     }
 
     generateActivityString(activity) {
-        var date = date_utils.parseDate(activity.day, activity.month, activity.year);
-        var new_activity = `${activity.name} on ${date}`;
+        var new_activity = `${activity.name} ${activity.date}`;
         return new_activity;
     }
     select(e) {
