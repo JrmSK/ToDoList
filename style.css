@@ -4,8 +4,11 @@
 }
 
 .container{
-    background-color: darkslategrey;
-    height:100%; 
+    height:100vh; 
+    background-color: darkslategray;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
 }
 
 /* header */
@@ -13,6 +16,7 @@
     text-align:center;
 }
 
+/* Inputs */
 .container .header .todoInput{
     padding : 5px;
     font-size : 1.5vw;
@@ -28,8 +32,7 @@
 
 .container .header .dateInput{
     margin-top: 5px;
-    padding : 3px;
-    font-size : 1.5vw;
+    font-size : 1.7vw;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.6);
 }
@@ -37,7 +40,7 @@
 .button-submit {
     margin-top: 5px;
     font-size: 1.5vw;
-    padding: 5.3px;
+    padding: 3.5px;
     border-radius: 5px;
     padding-right: 15px;
     padding-left: 15px;
@@ -50,12 +53,13 @@ input:focus {
     outline-color: rgba(245, 245, 220, 0.295)
 }
 
+/* toDo & done containers */
 .toDo-Container{
-    height:40%;
+    height:40vh;
 }
 
 .done-Container{
-    height:25%;
+    height:25vh;
 }
 
 .toDo-Container, .done-Container{
@@ -67,6 +71,7 @@ input:focus {
     margin:auto;
 }
 
+/* toDo & done lists */
 .toDo-Container ul,.done-Container ul{
     margin-top: 1vw;
     list-style: none;
@@ -78,16 +83,28 @@ input:focus {
     list-style: none;
     padding: 3px;
     padding-left: 1vw;
-    background-color: rgba(255, 255, 255, 0.150);
+    background-color: rgba(255, 255, 255, 0.75);
     border-radius: 3px;
     font-family: 'Caveat', cursive;
     font-size: 2.5vw;
 }
 
 .toDo-Container li:hover, .done-Container li:hover{
-    background-color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(255, 255, 255);
 }
 
+
+li.favorite{
+    background-color: rgba(250, 128, 114, 0.75);
+}
+
+
+li.favorite:hover{
+    background-color: salmon;
+    opacity: 1;
+}
+
+/* Titles */
 h1 {
     font-size: 3.5vw;
 }
@@ -101,12 +118,8 @@ h2 {
     font-family: 'Gloria Hallelujah', cursive;
 }
 
+/* Images */
 .inputImage{
     height: 1.5vw;
     margin-right: 0.5vw;
-}
-
-.favorite{
-    background-color: salmon;
-    color:white;
 }

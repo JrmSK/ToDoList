@@ -6,13 +6,13 @@ class App extends React.Component {
             placeholder: "Enter something ToDo",
             doneActivities: [],
             toDoActivities: [],
-            counter:0
+            counter: 0
         };
         this.addItem = this.addItem.bind(this);
-        this.moveToDoneList = this.moveToDoneList.bind(this)
-        this.moveToToDoList = this.moveToToDoList.bind(this)
-        this.delete = this.delete.bind(this)
-        this.changeDateFormat = this.changeDateFormat.bind(this)
+        this.moveToDoneList = this.moveToDoneList.bind(this);
+        this.moveToToDoList = this.moveToToDoList.bind(this);
+        this.delete = this.delete.bind(this);
+        this.changeDateFormat = this.changeDateFormat.bind(this);
 
     }
 
@@ -28,7 +28,7 @@ class App extends React.Component {
             this.setState({
                 activities: this.state.activities,
             });
-            document.getElementById('inputContent').value="";
+            document.getElementById('inputContent').value = "";
         } else {
             this.setState({
                 placeholder: "Enter at least one character"
@@ -36,7 +36,7 @@ class App extends React.Component {
         }
     }
 
-    /* change the date's format to be DD/MM/YYYY */
+    /* Change date's format to DD/MM/YYYY */
     changeDateFormat(date) {
         var correctDate = `${date.substring(8, 10)}/${date.substring(5, 7)}/${date.substring(0, 4)}`
         if (correctDate === "//") {
@@ -45,24 +45,27 @@ class App extends React.Component {
         return correctDate;
     }
 
+    /* Destroy a ToDo item, and create a new one in the done list */
     moveToDoneList(e) {
-        e.target.parentElement.remove()
-        this.state.doneActivities.push(e.target.parentElement.textContent)
+        e.target.parentElement.remove();
+        this.state.doneActivities.push(e.target.parentElement.textContent);
         this.setState({
             doneActivities: this.state.doneActivities,
             counter: this.state.counter + 1
         })
     }
+
+    /* Reset a done list item to the ToDo list */
     moveToToDoList(e) {
-        e.target.parentElement.remove()
-        this.state.toDoActivities.push(e.target.parentElement.textContent)
+        e.target.parentElement.remove();
+        this.state.toDoActivities.push(e.target.parentElement.textContent);
         this.setState({
             toDoActivities: this.state.toDoActivities,
         })
     }
 
     delete(e) {
-        e.target.parentElement.remove()
+        e.target.parentElement.remove();
     }
 
     render() {
@@ -102,21 +105,27 @@ class ToDoList extends React.Component {
         }
     }
 
+    /* Combines user's input and selected date */
     generateActivityString(activity) {
         var new_activity = `${activity.name} ${activity.date}`;
         return new_activity;
     }
+
+
     select(e) {
         this.props.handleClick(e);
     }
+
     selectDelete(e) {
         this.props.handleDelete(e);
     }
+
+    /* Give or remove favorite classname to selected ToDo item */
     setFavorite(e) {
-        var text = e.target.parentElement
-        if (e.target.parentElement.classList.contains("favorite")){
+        var text = e.target.parentElement;
+        if (e.target.parentElement.classList.contains("favorite")) {
             document.getElementById("toDo-Container").append(text);
-            e.target.parentElement.classList.remove("favorite")
+            e.target.parentElement.classList.remove("favorite");
         } else {
             e.target.parentElement.classList.add("favorite");
             document.getElementById("toDo-Container").prepend(text);
@@ -127,8 +136,18 @@ class ToDoList extends React.Component {
     render() {
         return (
             <ul id="toDo-Container">
-                {this.props.activities.map((activity, i) => <li key={i}><input className="inputImage" onClick={this.select} type="image" src="./images/tick.png" /><input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png" /><input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />{this.generateActivityString(activity)}</li>)}
-                {this.props.toDoActivities.map((i) => <li key={i.index}><input className="inputImage" onClick={this.select} type="image" src="./images/tick.png" /><input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png" /><input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />{i}</li>)}
+                {/* Will generate Todo's from user input */}
+                {this.props.activities.map((activity, i) => <li key={i}>
+                    <input className="inputImage" onClick={this.select} type="image" src="./images/tick.png" />
+                    <input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png" />
+                    <input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />{this.generateActivityString(activity)}</li>
+                )}
+                {/* Will generate Todo's from reset of done list item  */}
+                {this.props.toDoActivities.map((i) => <li key={i.index}>
+                    <input className="inputImage" onClick={this.select} type="image" src="./images/tick.png" />
+                    <input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png" />
+                    <input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />{i}</li>
+                )}
             </ul>
         );
     }
@@ -143,9 +162,11 @@ class DoneList extends React.Component {
         this.select = this.select.bind(this);
         this.selectDelete = this.selectDelete.bind(this);
     }
+
     select(e) {
         this.props.handleClick(e);
     }
+
     selectDelete(e) {
         this.props.handleDelete(e);
     }
@@ -153,7 +174,10 @@ class DoneList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.doneActivities.map((i) => <li key={i.index}><input onClick={this.select} className="inputImage" type="image" src="./images/redo.png" /><input onClick={this.selectDelete} className="inputImage" type="image" src="./images/bin.png" />{i}</li>)}
+                {this.props.doneActivities.map((i) => <li key={i.index}>
+                    <input onClick={this.select} className="inputImage" type="image" src="./images/redo.png" />
+                    <input onClick={this.selectDelete} className="inputImage" type="image" src="./images/bin.png" />{i}</li>
+                )}
             </ul>
         );
     }
