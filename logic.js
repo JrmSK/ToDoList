@@ -108,13 +108,15 @@ class ToDoList extends React.Component {
         this.props.handleDelete(e);
     }
     setFavorite(e){
-        e.target.parentElement.classList.add("favorite");
+        e.target.parentElement  .classList.add("favorite");
+        var text = e.target.parentElement
+        document.getElementById("toDo-Container").prepend(text);
     }
     
 
     render() {
         return (
-            <ul>
+            <ul id="toDo-Container">
                 {this.props.activities.map((activity, i) => <li key={i}><input className="inputImage" onClick={this.select} type="image" src="./images/tick.png"/><input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png"/><input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{this.generateActivityString(activity)}</li>)}
                 {this.props.toDoActivities.map((i) => <li key={i.index}><input className="inputImage" onClick={this.select} type="image" src="./images/tick.png"/><input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png"/><input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{i}</li>)}
             </ul>
@@ -141,7 +143,7 @@ class DoneList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.doneActivities.map((i) => <li key={i.index}><input onClick={this.select} className="input-image" type="image" src="./images/tick.png"/><input onClick={this.selectDelete} className="input-image" type="image" src="./images/bin.png"/>{i}</li>)}
+                {this.props.doneActivities.map((i) => <li key={i.index}><input onClick={this.select} className="inputImage" type="image" src="./images/tick.png"/><input onClick={this.selectDelete} className="inputImage" type="image" src="./images/bin.png"/>{i}</li>)}
             </ul>
         );
     }

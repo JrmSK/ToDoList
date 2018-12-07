@@ -20,7 +20,8 @@
 .toDo-Container{
     height:25%;
     margin-top:3%;
-    overflow-y: auto;
+   
+
     width:60%;
     margin: 5% auto;
 }
@@ -33,6 +34,8 @@
 }
 .toDo-Container, .done-Container{
     text-align: left;
+    overflow-y: auto;
+    overflow-x: none;
 }
 .toDo-Container ul,.done-Container ul{
     list-style: none;
