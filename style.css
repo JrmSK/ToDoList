@@ -18,9 +18,27 @@
     border-radius: 10px;
 }
 .toDo-Container{
+    height:25%;
+    margin-top:2%;
+    overflow: auto;
+    width:60%;
+margin: 5% auto;
+    background-color: lightsalmon
+
+}
+.done-Container{
+    margin-top:5%;
+    height:20%;
+    width:60%;
+    overflow: auto;
+    margin:auto;
+
+    background-color: lightsalmon
+}
+.toDo-Container, .done-Container{
     text-align: center;
 }
-.toDo-Container ul{
+.toDo-Container ul,.done-Container ul{
     list-style: none;
 }
 .toDo-Container .done{
