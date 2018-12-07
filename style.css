@@ -12,37 +12,44 @@
 }
 .container .header .todoInput{
     padding : 5px;
-    font-size : 20px;
+    font-size : 1.5vw;
     border: 1px solid black;
     width: 40%;
     border-radius: 10px;
 }
+
+.container .header .dateInput{
+    margin-top: 5px;
+    padding : 3px;
+    font-size : 1vw;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+
 .toDo-Container{
-    height:25%;
-    margin-top:3%;
-    overflow-y: auto;
-    width:60%;
     margin: 5% auto;
 }
 .done-Container{
-    margin-top:3%;
-    height:25%;
-    width:60%;
     overflow: auto;
     margin:auto;
 }
 .toDo-Container, .done-Container{
     text-align: left;
-
+    overflow-y: auto;
+    overflow-x: none;
+    margin-top:3%;
+    height:25%;
+    width:60%;
 }
 .toDo-Container ul,.done-Container ul{
     list-style: none;
 }
-
-.toDo-Container .done,.done-Container .done{
-    display: none;
-}
-
-.input-image {
+.inputImage{
     height: 20px;
+    width:20px;
+}
+.favorite{
+    background-color: salmon;
+    color:white;
 }
