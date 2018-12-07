@@ -37,6 +37,9 @@ class App extends React.Component {
 
     changeDateFormat(date) {
         var correctDate = `${date.substring(8,10)}/${date.substring(5,7)}/${date.substring(0,4)}`
+        if (correctDate === "//"){
+            correctDate="";
+        }
         return correctDate;
     }
 
@@ -104,13 +107,16 @@ class ToDoList extends React.Component {
     selectDelete(e){
         this.props.handleDelete(e);
     }
+    setFavorite(e){
+        e.target.parentElement.classList.add("favorite");
+    }
     
 
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li key={i}><input className="input-image" onClick={this.select} type="image" src="./images/tick.png"/><input className="input-image" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{this.generateActivityString(activity)}</li>)}
-                {this.props.toDoActivities.map((i) => <li key={i.index}><input className="input-image" onClick={this.select} type="image" src="./images/tick.png"/><input className="input-image" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{i}</li>)}
+                {this.props.activities.map((activity, i) => <li key={i}><input className="inputImage" onClick={this.select} type="image" src="./images/tick.png"/><input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png"/><input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{this.generateActivityString(activity)}</li>)}
+                {this.props.toDoActivities.map((i) => <li key={i.index}><input className="inputImage" onClick={this.select} type="image" src="./images/tick.png"/><input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png"/><input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{i}</li>)}
             </ul>
         );
     }

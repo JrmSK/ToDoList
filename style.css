@@ -41,6 +41,11 @@
     display: none;
 }
 
-.input-image {
+.inputImage{
     height: 20px;
+    width:20px;
+}
+.favorite{
+    background-color: salmon;
+    color:white;
 }
