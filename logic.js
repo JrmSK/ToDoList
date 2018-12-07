@@ -111,9 +111,14 @@ class ToDoList extends React.Component {
         this.props.handleDelete(e);
     }
     setFavorite(e) {
-        e.target.parentElement.classList.add("favorite");
         var text = e.target.parentElement
-        document.getElementById("toDo-Container").prepend(text);
+        if (e.target.parentElement.classList.contains("favorite")){
+            document.getElementById("toDo-Container").append(text);
+            e.target.parentElement.classList.remove("favorite")
+        } else {
+            e.target.parentElement.classList.add("favorite");
+            document.getElementById("toDo-Container").prepend(text);
+        }
     }
 
 
