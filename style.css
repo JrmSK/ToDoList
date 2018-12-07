@@ -2,53 +2,96 @@
     margin:0;
 }
 
+div {
+    border: 1px solid black;
+}
+
 .container{
     background-color: darksalmon;
     height:100%; 
 }
-.container .title,.container .header{
+
+.container .beforeHeader, .container .header{
     text-align:center;
-    padding-top:3%;
 }
+
 .container .header .todoInput{
     padding : 5px;
     font-size : 1.5vw;
     border: 1px solid black;
     width: 40%;
-    border-radius: 10px;
+    border-radius: 5px;
+
+}
+
+.todoInput::placeholder {
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .container .header .dateInput{
     margin-top: 5px;
     padding : 3px;
-    font-size : 1vw;
+    font-size : 1.5vw;
     border-radius: 5px;
     border: 1px solid black;
 }
 
+.button-submit {
+    font-size: 1.5vw;
+    padding: 3px;
+    border-radius: 5px;
+}
 
 .toDo-Container{
-    margin: 5% auto;
-}
-.done-Container{
-    overflow: auto;
     margin:auto;
+    height:45%;
 }
+
+.done-Container{
+    margin:auto;
+    height:30%;
+}
+
 .toDo-Container, .done-Container{
     text-align: left;
     overflow-y: auto;
     overflow-x: none;
-    margin-top:3%;
-    height:25%;
-    width:60%;
+    margin-top:1%;
+    width:90%;
 }
+
 .toDo-Container ul,.done-Container ul{
+    margin-top: 1vw;
     list-style: none;
 }
+
+.toDo-Container li,.done-Container li{
+    margin-top: 2px;
+    list-style: none;
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 0.150);
+    border-radius: 3px;
+    font-family: 'Caveat', cursive;
+    font-size: 3vw;
+}
+
+h1 {
+    font-size: 3.5vw;
+}
+
+h2 {
+    text-align: left;
+}
+
+.title {
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
 .inputImage{
     height: 20px;
     width:20px;
 }
+
 .favorite{
     background-color: salmon;
     color:white;

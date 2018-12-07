@@ -6,6 +6,7 @@ class App extends React.Component {
             placeholder: "Enter something ToDo",
             doneActivities: [],
             toDoActivities: [],
+            counter:0
         };
         this.addItem = this.addItem.bind(this);
         this.moveToDoneList = this.moveToDoneList.bind(this)
@@ -49,6 +50,7 @@ class App extends React.Component {
         this.state.doneActivities.push(e.target.parentElement.textContent)
         this.setState({
             doneActivities: this.state.doneActivities,
+            counter: this.state.counter + 1
         })
     }
     moveToToDoList(e) {
@@ -66,23 +68,23 @@ class App extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="title">
-                    <h1>ToDo List</h1>
+                <div className="beforeHeader">
+                    <h1 className="title">ToDo List</h1>
                 </div>
                 <div className="header">
                     <form onSubmit={this.addItem}>
                         <input id="inputContent" className="todoInput" ref={input => this.name = input} placeholder={this.state.placeholder} />
                         <br />
                         <input type="date" className="dateInput" ref={input => this.date = input} />
-                        <input type="submit" value="add"></input>
+                        <button className="button-submit" type="submit" >Add</button>
                     </form>
                 </div>
                 <div className="toDo-Container">
-                    <h2>To Do</h2>
+                    <h2 className="title">To Do</h2>
                     <ToDoList activities={this.state.activities} toDoActivities={this.state.toDoActivities} handleDelete={this.delete} handleClick={this.moveToDoneList} />
                 </div>
                 <div className="done-Container">
-                    <h2>Done</h2>
+                    <h2 className="title">Done</h2>
                     <DoneList doneActivities={this.state.doneActivities} handleClick={this.moveToToDoList} handleDelete={this.delete} />
                 </div>
             </div>
