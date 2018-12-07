@@ -37,6 +37,7 @@ class App extends React.Component {
     moveToDoneList(e) {
         e.target.parentElement.classList.add("done");
         this.state.doneActivities.push(e.target.parentElement.textContent)
+        console.log(e.target.parentElement.textContent)
         this.setState({
             doneActivities: this.state.doneActivities,
         })
