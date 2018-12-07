@@ -79,12 +79,12 @@ class App extends React.Component {
                         <button className="button-submit" type="submit" >Add</button>
                     </form>
                 </div>
+                <h2 className="title">To Do</h2>
                 <div className="toDo-Container">
-                    <h2 className="title">To Do</h2>
                     <ToDoList activities={this.state.activities} toDoActivities={this.state.toDoActivities} handleDelete={this.delete} handleClick={this.moveToDoneList} />
                 </div>
+                <h2 className="title">Done</h2>
                 <div className="done-Container">
-                    <h2 className="title">Done</h2>
                     <DoneList doneActivities={this.state.doneActivities} handleClick={this.moveToToDoList} handleDelete={this.delete} />
                 </div>
             </div>
