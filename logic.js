@@ -11,6 +11,8 @@ class App extends React.Component {
         this.moveToDoneList = this.moveToDoneList.bind(this)
         this.moveToToDoList = this.moveToToDoList.bind(this)
         this.delete = this.delete.bind(this)
+        this.changeDateFormat = this.changeDateFormat.bind(this)
+        
     }
 
     /* Create a ToDo Item and add it to the todolist as well as this.state.activities */
@@ -18,8 +20,9 @@ class App extends React.Component {
         event.preventDefault();
         var new_activity = {
             name: this.name.value,
-            date : this.date.value
+            date : this.changeDateFormat(this.date.value)
         };
+
         if (this.name.value !== "") {
             this.state.activities.push(new_activity);
             this.setState({
@@ -30,6 +33,11 @@ class App extends React.Component {
                 placeholder: "Enter at least one character"
             })
         }
+    }
+
+    changeDateFormat(date) {
+        var correctDate = `${date.substring(8,10)}/${date.substring(5,7)}/${date.substring(0,4)}`
+        return correctDate;
     }
 
     moveToDoneList(e) {
@@ -101,8 +109,8 @@ class ToDoList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}<input onClick={this.select} type="image" src="./images/tick.png"/><input onClick={this.selectDelete} type="image" src="./images/bin.png"/></li>)}
-                {this.props.toDoActivities.map((i) => <li key={i.index}>{i}<input onClick={this.select} type="image" src="./images/tick.png"/><input onClick={this.selectDelete} type="image" src="./images/bin.png"/></li>)}
+                {this.props.activities.map((activity, i) => <li key={i}><input className="input-image" onClick={this.select} type="image" src="./images/tick.png"/><input className="input-image" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{this.generateActivityString(activity)}</li>)}
+                {this.props.toDoActivities.map((i) => <li key={i.index}><input className="input-image" onClick={this.select} type="image" src="./images/tick.png"/><input className="input-image" onClick={this.selectDelete} type="image" src="./images/bin.png"/>{i}</li>)}
             </ul>
         );
     }
@@ -127,7 +135,7 @@ class DoneList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.doneActivities.map((i) => <li key={i.index}>{i}<input onClick={this.select} type="image" src="./images/tick.png"/><input onClick={this.selectDelete} type="image" src="./images/bin.png"/></li>)}
+                {this.props.doneActivities.map((i) => <li key={i.index}><input onClick={this.select} className="input-image" type="image" src="./images/tick.png"/><input onClick={this.selectDelete} className="input-image" type="image" src="./images/bin.png"/>{i}</li>)}
             </ul>
         );
     }

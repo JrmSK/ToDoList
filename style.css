@@ -19,28 +19,28 @@
 }
 .toDo-Container{
     height:25%;
-    margin-top:2%;
-    overflow: auto;
+    margin-top:3%;
+    overflow-y: auto;
     width:60%;
-margin: 5% auto;
-    background-color: lightsalmon
-
+    margin: 5% auto;
 }
 .done-Container{
-    margin-top:5%;
-    height:20%;
+    margin-top:3%;
+    height:25%;
     width:60%;
     overflow: auto;
     margin:auto;
-
-    background-color: lightsalmon
 }
 .toDo-Container, .done-Container{
-    text-align: center;
+    text-align: left;
 }
 .toDo-Container ul,.done-Container ul{
     list-style: none;
 }
 .toDo-Container .done,.done-Container .done{
     display: none;
+}
+
+.input-image {
+    height: 20px;
 }
