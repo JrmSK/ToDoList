@@ -34,6 +34,7 @@ class App extends React.Component {
     moveToDoneList(e) {
         e.target.parentElement.classList.add("done");
         this.state.doneActivities.push(e.target.parentElement.textContent)
+        console.log(e.target.parentElement.textContent)
         this.setState({
             doneActivities: this.state.doneActivities,
         })
@@ -95,7 +96,7 @@ class ToDoList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}<button onClick={this.select} >Done !</button></li>)}
+                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}<button onClick={this.select} ><img src={"./images/tick.png"} /></button></li>)}
             </ul>
         );
     }
