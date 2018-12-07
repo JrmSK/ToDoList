@@ -118,8 +118,8 @@ class ToDoList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}<input onClick={this.select} type="image" src="./images/tick.png"/><button onClick={this.selectDelete}>Delete !</button></li>)}
-                {this.props.toDoActivities.map((i) => <li key={i.index}>{i}<input onClick={this.select} type="image" src="./images/tick.png"/><button onClick={this.selectDelete}>Delete</button></li>)}
+                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}<input onClick={this.select} type="image" src="./images/tick.png"/><input onClick={this.selectDelete} type="image" src="./images/bin.png"/></li>)}
+                {this.props.toDoActivities.map((i) => <li key={i.index}>{i}<input onClick={this.select} type="image" src="./images/tick.png"/><input onClick={this.selectDelete} type="image" src="./images/bin.png"/></li>)}
             </ul>
         );
     }
@@ -144,7 +144,7 @@ class DoneList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.doneActivities.map((i) => <li key={i.index}>{i}<input onClick={this.select} type="image" src="./images/tick.png"/><button onClick={this.selectDelete}>Delete</button></li>)}
+                {this.props.doneActivities.map((i) => <li key={i.index}>{i}<input onClick={this.select} type="image" src="./images/tick.png"/><input onClick={this.selectDelete} type="image" src="./images/bin.png"/></li>)}
             </ul>
         );
     }
