@@ -143,7 +143,7 @@ class DoneList extends React.Component {
     render() {
         return (
             <ul>
-                {this.props.doneActivities.map((i) => <li key={i.index}><input onClick={this.select} className="inputImage" type="image" src="./images/tick.png"/><input onClick={this.selectDelete} className="inputImage" type="image" src="./images/bin.png"/>{i}</li>)}
+                {this.props.doneActivities.map((i) => <li key={i.index}><input onClick={this.select} className="inputImage" type="image" src="./images/redo.png"/><input onClick={this.selectDelete} className="inputImage" type="image" src="./images/bin.png"/>{i}</li>)}
             </ul>
         );
     }
