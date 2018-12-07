@@ -5,9 +5,12 @@ class App extends React.Component {
             activities: [],
             placeholder: "Enter something ToDo",
             doneActivities: [],
+            toDoActivities: [],
         };
         this.addItem = this.addItem.bind(this);
         this.moveToDoneList = this.moveToDoneList.bind(this)
+        this.moveToToDoList = this.moveToToDoList.bind(this)
+        this.delete = this.delete.bind(this)
     }
 
     /* Create a ToDo Item and add it to the todolist as well as this.state.activities */
@@ -39,6 +42,17 @@ class App extends React.Component {
             doneActivities: this.state.doneActivities,
         })
     }
+    moveToToDoList(e) {
+        e.target.parentElement.classList.add("done");
+        this.state.toDoActivities.push(e.target.parentElement.textContent)
+        this.setState({
+            toDoActivities: this.state.toDoActivities,
+        })
+    }
+
+    delete(e){
+        e.target.parentElement.classList.add("done");
+    }
 
     /* Create drop down options */
     renderOptions(arr) {
@@ -68,10 +82,10 @@ class App extends React.Component {
                     </form>
                 </div>
                 <div className="toDo-Container">
-                    <ToDoList activities={this.state.activities} handleClick={this.moveToDoneList} />
+                    <ToDoList activities={this.state.activities} toDoActivities={this.state.toDoActivities} handleDelete={this.delete} handleClick={this.moveToDoneList} />
                 </div>
                 <div className="done-Container">
-                    <DoneList doneActivities={this.state.doneActivities} />
+                    <DoneList doneActivities={this.state.doneActivities} handleClick={this.moveToToDoList} handleDelete={this.delete}/>
                 </div>
             </div>
         );
@@ -82,6 +96,10 @@ class ToDoList extends React.Component {
     constructor(props) {
         super(props);
         this.select = this.select.bind(this);
+        this.selectDelete = this.selectDelete.bind(this);
+        this.state = {
+            toDoActivities: this.props.toDoActivities,
+        }
     }
 
     generateActivityString(activity) {
@@ -92,11 +110,16 @@ class ToDoList extends React.Component {
     select(e) {
         this.props.handleClick(e);
     }
+    selectDelete(e){
+        this.props.handleDelete(e);
+    }
+    
 
     render() {
         return (
             <ul>
-                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}<button onClick={this.select} ><img src={"./images/tick.png"} /></button></li>)}
+                {this.props.activities.map((activity, i) => <li key={i}>{this.generateActivityString(activity)}<button onClick={this.select} >Done !</button><button onClick={this.selectDelete}>Delete !</button></li>)}
+                {this.props.toDoActivities.map((i) => <li key={i.index}>{i}<button onClick={this.select} >Done !</button><button onClick={this.selectDelete}>Delete</button></li>)}
             </ul>
         );
     }
@@ -108,12 +131,20 @@ class DoneList extends React.Component {
         this.state = {
             doneActivities: this.props.doneActivities,
         }
+        this.select = this.select.bind(this);
+        this.selectDelete = this.selectDelete.bind(this);
+    }
+    select(e) {
+        this.props.handleClick(e);
+    }
+    selectDelete(e){
+        this.props.handleDelete(e);
     }
 
     render() {
         return (
             <ul>
-                {this.props.doneActivities.map((i) => <li key={i.index}>{i}</li>)}
+                {this.props.doneActivities.map((i) => <li key={i.index}>{i}<button onClick={this.select} >Done !</button><button onClick={this.selectDelete}>Delete</button></li>)}
             </ul>
         );
     }

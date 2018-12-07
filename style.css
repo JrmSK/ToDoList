@@ -41,6 +41,6 @@ margin: 5% auto;
 .toDo-Container ul,.done-Container ul{
     list-style: none;
 }
-.toDo-Container .done{
+.toDo-Container .done,.done-Container .done{
     display: none;
 }
