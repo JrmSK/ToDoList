@@ -35,8 +35,9 @@ class App extends React.Component {
         }
     }
 
+    /* change the date's format to be DD/MM/YYYY */
     changeDateFormat(date) {
-        var correctDate = `${date.substring(8,10)}/${date.substring(5,7)}/${date.substring(0,4)}`
+        var correctDate = `${date.substring(8,10)}/${date.substring(5,7)}/${date.substring(0,4)}`;
         return correctDate;
     }
 

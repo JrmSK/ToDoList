@@ -1,4 +1,4 @@
-*{
+* {
     margin:0;
 }
 
@@ -33,10 +33,12 @@
 }
 .toDo-Container, .done-Container{
     text-align: left;
+
 }
 .toDo-Container ul,.done-Container ul{
     list-style: none;
 }
+
 .toDo-Container .done,.done-Container .done{
     display: none;
 }
