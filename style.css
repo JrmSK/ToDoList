@@ -194,6 +194,7 @@ h2 {
     }
 
     #logo {
-        height: 12vw;
+        height: 15vw;
+        border-top: 50vw;
     }
 }
