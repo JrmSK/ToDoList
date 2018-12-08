@@ -78,12 +78,10 @@ input:focus {
 /* toDo & done containers */
 .toDo-Container{
     height:38vh;
-    border: 1px solid black;
 }
 
 .done-Container{
     height:23vh;
-    border: 1px solid black;
 
 }
 
