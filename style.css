@@ -182,7 +182,7 @@ h2 {
     margin-left: 5%;
 }
 
-@media screen and (max-width:450px) {
+@media screen and (max-width:600px) {
     .dateInput, .todoInput {
         font-size: 15px;
     }
