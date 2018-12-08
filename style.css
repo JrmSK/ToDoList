@@ -81,12 +81,11 @@ input:focus {
 .toDo-Container li, .done-Container li{
     margin-top: 2px;
     list-style: none;
-    padding: 3px;
     padding-left: 1vw;
     background-color: rgba(255, 255, 255, 0.75);
     border-radius: 3px;
-    font-family: 'Caveat', cursive;
-    font-size: 2.5vw;
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.3vw;
 }
 
 .toDo-Container li:hover, .done-Container li:hover{
