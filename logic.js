@@ -12,6 +12,7 @@ class App extends React.Component {
         this.moveToDoneList = this.moveToDoneList.bind(this);
         this.moveToToDoList = this.moveToToDoList.bind(this);
         this.delete = this.delete.bind(this);
+        this.setFavorite = this.setFavorite.bind(this);
         this.changeDateFormat = this.changeDateFormat.bind(this);
         this.playSound = this.playSound.bind(this);
 
@@ -73,6 +74,19 @@ class App extends React.Component {
 
     }
 
+     /* Give or remove favorite classname to selected ToDo item */
+     setFavorite(e) {
+        var text = e.target.parentElement;
+        if (e.target.parentElement.classList.contains("favorite")) {
+            document.getElementById("toDo-Container").append(text);
+            e.target.parentElement.classList.remove("favorite");
+        } else {
+            e.target.parentElement.classList.add("favorite");
+            document.getElementById("toDo-Container").prepend(text);
+            this.playSound("star");                                     // issue here
+        }
+    }
+
     playSound(type) {
         document.getElementById("sound").src = `./sound/${type}.mp3`;
         document.getElementById("sound").play();
@@ -94,7 +108,7 @@ class App extends React.Component {
                 </div>
                 <h2 className="title">To Do</h2>
                 <div className="toDo-Container">
-                    <ToDoList activities={this.state.activities} toDoActivities={this.state.toDoActivities} handleDelete={this.delete} handlePlaySound={this.playSound} handleClick={this.moveToDoneList} />
+                    <ToDoList activities={this.state.activities} toDoActivities={this.state.toDoActivities} handleDelete={this.delete} handleFavorite={this.setFavorite} handleClick={this.moveToDoneList} />
                 </div>
                 <h2 className="title">Done</h2>
                 <div className="done-Container">
@@ -110,7 +124,7 @@ class ToDoList extends React.Component {
         super(props);
         this.select = this.select.bind(this);
         this.selectDelete = this.selectDelete.bind(this);
-        this.playSoundHandle = this.playSoundHandle.bind(this);
+        this.selectFavorite = this.selectFavorite.bind(this);
         this.state = {
             toDoActivities: this.props.toDoActivities,
         }
@@ -122,7 +136,6 @@ class ToDoList extends React.Component {
         return new_activity;
     }
 
-
     select(e) {
         this.props.handleClick(e);
     }
@@ -131,23 +144,9 @@ class ToDoList extends React.Component {
         this.props.handleDelete(e);
     }
 
-    playSoundHandle(type) {
-        this.props.handlePlaySound(type);
+    selectFavorite(e) {
+        this.props.handleFavorite(e);
     }
-
-    /* Give or remove favorite classname to selected ToDo item */
-    setFavorite(e) {
-        var text = e.target.parentElement;
-        if (e.target.parentElement.classList.contains("favorite")) {
-            document.getElementById("toDo-Container").append(text);
-            e.target.parentElement.classList.remove("favorite");
-        } else {
-            e.target.parentElement.classList.add("favorite");
-            document.getElementById("toDo-Container").prepend(text);
-            this.playSoundHandle("star");                                     // issue here
-        }
-    }
-
 
     render() {
         return (
@@ -155,13 +154,13 @@ class ToDoList extends React.Component {
                 {/* Will generate Todo's from user input */}
                 {this.props.activities.map((activity, i) => <li key={i}>
                     <input className="inputImage" onClick={this.select} type="image" src="./images/tick.png" />
-                    <input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png" />
+                    <input className="inputImage" onClick={this.selectFavorite}   type="image" src="./images/star.png" />
                     <input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />{this.generateActivityString(activity)}</li>
                 )}
                 {/* Will generate Todo's from reset of done list item  */}
                 {this.props.toDoActivities.map((i) => <li key={i.index}>
                     <input className="inputImage" onClick={this.select} type="image" src="./images/tick.png" />
-                    <input className="inputImage" onClick={this.setFavorite} type="image" src="./images/star.png" />
+                    <input className="inputImage" onClick={this.selectFavorite} type="image" src="./images/star.png" />
                     <input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />{i}</li>
                 )}
             </ul>
