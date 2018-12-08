@@ -8,7 +8,6 @@
     background-color: darkslategray;
     background-position: center;
     background-size: cover;
-    opacity: 0.8;
 }
 
 /* header */
@@ -82,10 +81,11 @@ input:focus {
     margin-top: 2px;
     list-style: none;
     padding-left: 1%;
+    padding-bottom: -2px;
     background-color: rgba(255, 255, 255, 0.75);
     border-radius: 3px;
     font-family: 'Gamja Flower', cursive;
-    font-size: 100%;
+    font-size: 150%;
 }
 
 .toDo-Container li:hover, .done-Container li:hover{
@@ -121,4 +121,36 @@ h2 {
 .inputImage{
     height: 1.5vw;
     margin-right: 0.5vw;
+}
+
+.clock {
+    margin-right: 15px;
+}
+
+/* Modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color:  rgba(0,0,0,0.3);
+    padding: 50;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 5;
+    max-width: 500;
+    min-height: 150;
+    margin: 0 auto;
+    padding: 30;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 200%;
+    padding-top: 10%;
+}
+
+.modal-element {
+    margin-top: 5%;
+    margin-left: 5%;
 }
