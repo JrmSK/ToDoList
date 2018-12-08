@@ -28,14 +28,20 @@
 }
 
 /* header */
+#logo {
+    height: 6vw;
+    position: absolute;
+    left: 5vw;
+    top: 3vw;
+}
+
 .container .header-title, .container .header{
     text-align:center;
 }
 
 /* Inputs */
 .container .header .todoInput{
-    padding : 5px;
-    font-size : 150%;
+    font-size : 2vw;
     border: 1px solid black;
     width: 45%;
     border-radius: 5px;
@@ -48,14 +54,14 @@
 
 .container .header .dateInput{
     margin-top: 5px;
-    font-size : 1.7vh;
+    font-size : 1.5vw;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 .button-submit {
     margin-top: 5px;
-    font-size: 1.5vh;
+    font-size: 1.5vw;
     padding: 3.5px;
     border-radius: 5px;
     padding-right: 15px;
@@ -102,7 +108,7 @@ input:focus {
     background-color: rgba(255, 255, 255, 0.75);
     border-radius: 3px;
     font-family: 'Gamja Flower', cursive;
-    font-size: 150%;
+    font-size: 2vw;
 }
 
 .toDo-Container li:hover, .done-Container li:hover{
@@ -122,7 +128,7 @@ li.favorite:hover{
 
 /* Titles */
 h1 {
-    font-size: 200%;
+    font-size: 3.5vw;
     color: white;
 }
 
@@ -130,6 +136,7 @@ h2 {
     text-align: left;
     margin-left: 5vw;
     color: white;
+    font-size: 2vw;
 }
 
 .title {
@@ -172,4 +179,13 @@ h2 {
 .modal-element {
     margin-top: 5%;
     margin-left: 5%;
+}
+
+@media screen and (min-width: 600px) {
+    .dateInput, .todoInput {
+        font-size: 1.5vw;
+    }
+    h1 , h2 {
+        font-size: 2vw;
+    }
 }

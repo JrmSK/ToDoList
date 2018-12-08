@@ -10,7 +10,7 @@ class App extends React.Component {
             counter: 0,
             isOpen: false,
             activityContent: "",
-            bgIndex: 0 
+            bgIndex: 0
         };
         this.addItem = this.addItem.bind(this);
         this.moveToDoneList = this.moveToDoneList.bind(this);
@@ -21,7 +21,7 @@ class App extends React.Component {
         this.playSound = this.playSound.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.changeBg = this.changeBg.bind(this);
-        
+
 
     }
 
@@ -116,8 +116,9 @@ class App extends React.Component {
         return (
             <div id={bgStyle} className="container">
                 <div className="header-title">
+                    <img id="logo" src="./images/logo.png" />
                     <button className="change-bg" onClick={this.changeBg}>?</button>
-                    <h1 className="title">ToDo List</h1>
+                    <h1 className="title">2Brains 2Furious</h1>
                 </div>
                 <div className="header">
                     <form onSubmit={this.addItem}>
@@ -133,7 +134,7 @@ class App extends React.Component {
                 </div>
                 <h2 className="title">Done</h2>
                 <div className="done-Container">
-                    <DoneList doneActivities={this.state.doneActivities} handleClick={this.moveToToDoList} handleDelete={this.delete} />
+                    <DoneList doneActivities={this.state.doneActivities} handleClick={this.moveToToDoList} handleDelete={this.delete} handleCounter={this.state.counter} />
                 </div>
                 <Modal show={this.state.isOpen} onClose={this.toggleModal} contentHandle={this.state.activityContent} handleSound={this.playSound} />
             </div>
