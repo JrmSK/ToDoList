@@ -192,4 +192,8 @@ h2 {
     .toDo-Container li, .done-Container li {
          font-size: 5vw;
     }
+
+    #logo {
+        height: 12vw;
+    }
 }
