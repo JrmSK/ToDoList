@@ -55,11 +55,11 @@ input:focus {
 
 /* toDo & done containers */
 .toDo-Container{
-    height:40vh;
+    height:35vh;
 }
 
 .done-Container{
-    height:25vh;
+    height:20vh;
 }
 
 .toDo-Container, .done-Container{
