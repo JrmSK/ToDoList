@@ -238,11 +238,11 @@ class Modal extends React.Component {
     /* Set the alarm for the selected activity, with the selected amount of time */
     alarmSet() {
         var that = this;
+        var activity = this.props.contentHandle
         setTimeout(function () {
-            var activity = that.props.contentHandle;
             that.playSound("star");
             var aud = document.getElementById("sound");
-            aud.onended = function () {                     // this was necessary because the sound was played after the alert otherwise
+            aud.onended = function () {                     // this was necessary because otherwise the sound was played after the alert 
                 alert(`dont forget: ${activity}`);
             }
         }, (this.state.value * 60000))
