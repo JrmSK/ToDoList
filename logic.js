@@ -13,6 +13,7 @@ class App extends React.Component {
         this.moveToToDoList = this.moveToToDoList.bind(this);
         this.delete = this.delete.bind(this);
         this.changeDateFormat = this.changeDateFormat.bind(this);
+        this.playSound = this.playSound.bind(this);
 
     }
 
@@ -53,6 +54,7 @@ class App extends React.Component {
             doneActivities: this.state.doneActivities,
             counter: this.state.counter + 1
         })
+        this.playSound("done");
     }
 
     /* Reset a done list item to the ToDo list */
@@ -62,10 +64,18 @@ class App extends React.Component {
         this.setState({
             toDoActivities: this.state.toDoActivities,
         })
+        this.playSound("recycle");
     }
 
     delete(e) {
         e.target.parentElement.remove();
+        this.playSound("trash");
+
+    }
+
+    playSound(type) {
+        document.getElementById("sound").src = `./sound/${type}.mp3`;
+        document.getElementById("sound").play();
     }
 
     render() {
@@ -84,7 +94,7 @@ class App extends React.Component {
                 </div>
                 <h2 className="title">To Do</h2>
                 <div className="toDo-Container">
-                    <ToDoList activities={this.state.activities} toDoActivities={this.state.toDoActivities} handleDelete={this.delete} handleClick={this.moveToDoneList} />
+                    <ToDoList activities={this.state.activities} toDoActivities={this.state.toDoActivities} handleDelete={this.delete} handlePlaySound={this.playSound} handleClick={this.moveToDoneList} />
                 </div>
                 <h2 className="title">Done</h2>
                 <div className="done-Container">
@@ -100,6 +110,7 @@ class ToDoList extends React.Component {
         super(props);
         this.select = this.select.bind(this);
         this.selectDelete = this.selectDelete.bind(this);
+        this.playSoundHandle = this.playSoundHandle.bind(this);
         this.state = {
             toDoActivities: this.props.toDoActivities,
         }
@@ -120,6 +131,10 @@ class ToDoList extends React.Component {
         this.props.handleDelete(e);
     }
 
+    playSoundHandle(type) {
+        this.props.handlePlaySound(type);
+    }
+
     /* Give or remove favorite classname to selected ToDo item */
     setFavorite(e) {
         var text = e.target.parentElement;
@@ -129,6 +144,7 @@ class ToDoList extends React.Component {
         } else {
             e.target.parentElement.classList.add("favorite");
             document.getElementById("toDo-Container").prepend(text);
+            this.playSoundHandle("star");                                     // issue here
         }
     }
 
