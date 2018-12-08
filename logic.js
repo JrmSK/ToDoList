@@ -1,6 +1,7 @@
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.bgs = ["bg1", "bg2", "bg3"]
         this.state = {
             activities: [],
             placeholder: "Enter something ToDo",
@@ -9,6 +10,7 @@ class App extends React.Component {
             counter: 0,
             isOpen: false,
             activityContent: "",
+            bgIndex: 0 
         };
         this.addItem = this.addItem.bind(this);
         this.moveToDoneList = this.moveToDoneList.bind(this);
@@ -18,7 +20,8 @@ class App extends React.Component {
         this.changeDateFormat = this.changeDateFormat.bind(this);
         this.playSound = this.playSound.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-
+        this.changeBg = this.changeBg.bind(this);
+        
 
     }
 
@@ -103,10 +106,17 @@ class App extends React.Component {
         });
     }
 
+    changeBg() {
+        var newIndex = this.state.bgIndex + 1;
+        this.setState({ bgIndex: newIndex });
+    }
+
     render() {
+        var bgStyle = this.bgs[this.state.bgIndex % this.bgs.length];
         return (
-            <div className="container">
+            <div id={bgStyle} className="container">
                 <div className="header-title">
+                    <button className="change-bg" onClick={this.changeBg}>?</button>
                     <h1 className="title">ToDo List</h1>
                 </div>
                 <div className="header">

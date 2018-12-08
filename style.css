@@ -3,9 +3,26 @@
     margin:0;
 }
 
-.container{
+#root{
     height:100%; 
-    background-color: darkslategray;
+    background-image: url(./images/bg1.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.container {
+    height: 100vh;
+
+}
+
+#bg2 {
+    background-image: url(./images/bg2.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#bg3 {
+    background-image: url(./images/bg3.jpg);
     background-position: center;
     background-size: cover;
 }
@@ -106,11 +123,13 @@ li.favorite:hover{
 /* Titles */
 h1 {
     font-size: 200%;
+    color: white;
 }
 
 h2 {
     text-align: left;
     margin-left: 5vw;
+    color: white;
 }
 
 .title {
