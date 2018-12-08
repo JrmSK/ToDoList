@@ -262,7 +262,7 @@ class Modal extends React.Component {
             <div className="backdrop" className="modal-backdrop">
                 <div className="modal">
                     <p>When shall I remind you of your task?</p>
-                    <select className="modal-element" value={this.state.value} onChange={this.handleChange} selected={5} id="time-selected">
+                    <select className="modal-element" value={this.state.value} onChange={this.handleChange} selected={1} id="time-selected">
                         <option value={1}>1mn</option>
                         <option value={5}>5mn</option>
                         <option value={10}>10mn</option>
