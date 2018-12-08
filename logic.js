@@ -90,7 +90,7 @@ class App extends React.Component {
         } else {
             e.target.parentElement.classList.add("favorite");
             document.getElementById("toDo-Container").prepend(text);
-            this.playSound("star");                                     // issue here
+            this.playSound("star");
         }
     }
 
