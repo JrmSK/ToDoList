@@ -184,9 +184,12 @@ h2 {
 
 @media screen and (max-width: 600px) {
     .dateInput, .todoInput {
-        font-size: 3vw;
+        font-size: 5vw;
     }
     h1 , h2 {
-        font-size: 4vw;
+        font-size: 7vw;
+    }
+    .toDo-Container li, .done-Container li {
+         font-size: 5vw;
     }
 }
