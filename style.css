@@ -41,7 +41,7 @@
 
 /* Inputs */
 .container .header .todoInput{
-    font-size : 2vw;
+    font-size : 1.5vw;
     border: 1px solid black;
     width: 45%;
     border-radius: 5px;
@@ -77,11 +77,14 @@ input:focus {
 
 /* toDo & done containers */
 .toDo-Container{
-    height:39%;
+    height:38vh;
+    border: 1px solid black;
 }
 
 .done-Container{
-    height:24%;
+    height:23vh;
+    border: 1px solid black;
+
 }
 
 .toDo-Container, .done-Container{
@@ -128,7 +131,7 @@ li.favorite:hover{
 
 /* Titles */
 h1 {
-    font-size: 3.5vw;
+    font-size: 2.5vw;
     color: white;
 }
 
@@ -136,7 +139,7 @@ h2 {
     text-align: left;
     margin-left: 5vw;
     color: white;
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 
 .title {
@@ -181,11 +184,11 @@ h2 {
     margin-left: 5%;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
     .dateInput, .todoInput {
-        font-size: 1.5vw;
+        font-size: 3vw;
     }
     h1 , h2 {
-        font-size: 2vw;
+        font-size: 4vw;
     }
 }
