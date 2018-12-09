@@ -192,7 +192,8 @@ class ToDoList extends React.Component {
                 {this.props.toDoActivities.map((i) => <li key={i.index}>
                     <input className="inputImage" onClick={this.select} type="image" src="./images/tick.png" />
                     <input className="inputImage" onClick={this.selectFavorite} type="image" src="./images/star.png" />
-                    <input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />{i}</li>
+                    <input className="inputImage" onClick={this.selectDelete} type="image" src="./images/bin.png" />
+                    <input className="inputImage clock" onClick={this.openModal} type="image" src="./images/clock.png" />{i}</li>
                 )}
             </ul>
         );
